@@ -51,7 +51,8 @@ export function FlightSimProvider({ children }: {children: React.ReactNode;}) {
     const speed = 16 + 3 * Math.sin(tick / 8);
     const height = 74 + 6 * Math.sin(tick / 13 + 1);
     const flightSeconds = startRef.current.flightSeconds + tick;
-    const routeProgress = tick % 24 / 24;
+    const cycle = tick % 48;
+    const routeProgress = cycle <= 24 ? cycle / 24 : (48 - cycle) / 24;
 
     return {
       battery: Math.round(battery),

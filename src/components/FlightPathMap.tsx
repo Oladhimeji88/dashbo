@@ -1,6 +1,22 @@
 import React from 'react';
+import { useFlightSimulation } from '../hooks/useFlightSimulation';
 
 export function FlightPathMap() {
+  const { routeProgress } = useFlightSimulation();
+  const routeRef = React.useRef<SVGPathElement>(null);
+  const [marker, setMarker] = React.useState({ x: 110, y: 96, angle: 160 });
+
+  React.useEffect(() => {
+    const route = routeRef.current;
+    if (!route) return;
+    const total = route.getTotalLength();
+    const dist = routeProgress * total;
+    const point = route.getPointAtLength(dist);
+    const ahead = route.getPointAtLength(Math.min(total, dist + 1));
+    const angle = Math.atan2(ahead.y - point.y, ahead.x - point.x) * (180 / Math.PI);
+    setMarker({ x: point.x, y: point.y, angle });
+  }, [routeProgress]);
+
   return (
     <section
       aria-label="Flight path"
@@ -33,19 +49,25 @@ export function FlightPathMap() {
 
           {/* route */}
           <path
+            ref={routeRef}
             d="M110 96 C150 74 206 82 214 112 C222 142 176 152 154 138 C126 120 128 162 150 178 C170 192 192 190 204 196"
             fill="none"
             stroke="#ffffff"
             strokeWidth="1.8"
             strokeDasharray="6 6"
             strokeLinecap="round" />
-          
+
 
           {/* launch point */}
           <circle cx="110" cy="96" r="4.5" fill="#8c8c8c" />
 
           {/* drone marker */}
-          <g transform="translate(204 196)">
+          <g
+            style={{
+              transform: `translate(${marker.x}px, ${marker.y}px)`,
+              transition: 'transform 1s linear'
+            }}>
+
             <rect
               x="-11"
               y="-11"
@@ -55,8 +77,12 @@ export function FlightPathMap() {
               stroke="#ffffff"
               strokeWidth="1.4"
               strokeDasharray="4 3" />
-            
-            <path d="M-5 -7 L7 0 L-5 7 Z" fill="#ffffff" transform="rotate(160)" />
+
+            <path
+              d="M-5 -7 L7 0 L-5 7 Z"
+              fill="#ffffff"
+              style={{ transform: `rotate(${marker.angle}deg)`, transition: 'transform 1s linear' }} />
+
           </g>
         </svg>
 
