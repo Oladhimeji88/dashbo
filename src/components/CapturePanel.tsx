@@ -1,8 +1,19 @@
 import React from 'react';
-import { resolutions, telemetry } from '../data/drone';
+import { resolutions, cameraSettings } from '../data/drone';
+import { useFlightSimulation } from '../hooks/useFlightSimulation';
 
 export function CapturePanel() {
   const [selected, setSelected] = React.useState<string>(resolutions[1]);
+  const { speed, height, flightTime } = useFlightSimulation();
+
+  const telemetry = [
+  { label: 'Speed', value: speed },
+  { label: 'Lens', value: cameraSettings.lens },
+  { label: 'Height', value: height },
+  { label: 'ISO', value: cameraSettings.iso },
+  { label: 'Flight time', value: flightTime },
+  { label: 'Shutter', value: cameraSettings.shutter }];
+
 
   return (
     <section
@@ -45,7 +56,7 @@ export function CapturePanel() {
         {telemetry.map((item) =>
         <div key={item.label}>
             <dt className="text-[12.5px] text-muted">{item.label}</dt>
-            <dd className="mt-0.5 text-[19px] font-semibold tracking-tight text-white">
+            <dd className="mt-0.5 text-[19px] font-semibold tracking-tight tabular-nums text-white">
               {item.value}
             </dd>
           </div>
