@@ -6,6 +6,7 @@ import { AirspaceMapPage } from './pages/AirspaceMapPage';
 import { AlertsPage } from './pages/AlertsPage';
 import { DisplaysPage } from './pages/DisplaysPage';
 import { SettingsPage } from './pages/SettingsPage';
+import { FlightSimProvider } from './hooks/useFlightSimulation';
 
 const pages: Record<PageId, React.ComponentType> = {
   home: DashboardPage,
