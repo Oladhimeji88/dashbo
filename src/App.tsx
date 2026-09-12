@@ -25,7 +25,9 @@ export function App() {
     <div className="min-h-screen w-full bg-[#141414] p-2.5 font-sans text-white sm:p-4">
       <main className="mx-auto flex max-w-[1600px] flex-col gap-3 rounded-[20px] bg-shell p-3 sm:gap-4 sm:rounded-[26px] sm:p-4 lg:h-full lg:min-h-[760px] lg:flex-row">
         <SideRail active={active} onChange={setActive} />
-        <Page />
+        <FlightSimProvider>
+          <Page />
+        </FlightSimProvider>
       </main>
     </div>);
 
