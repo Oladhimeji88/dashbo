@@ -15,12 +15,17 @@ const items = [
 { id: 'map', label: 'Airspace map', Icon: GlobeIcon },
 { id: 'alerts', label: 'Alerts', Icon: BellIcon },
 { id: 'displays', label: 'Displays', Icon: MonitorIcon },
-{ id: 'settings', label: 'Settings', Icon: SettingsIcon }];
+{ id: 'settings', label: 'Settings', Icon: SettingsIcon }] as const;
 
 
-export function SideRail() {
-  const [active, setActive] = React.useState('home');
+export type PageId = (typeof items)[number]['id'];
 
+type SideRailProps = {
+  active: PageId;
+  onChange: (id: PageId) => void;
+};
+
+export function SideRail({ active, onChange }: SideRailProps) {
   return (
     <nav
       aria-label="Primary"
@@ -43,7 +48,7 @@ export function SideRail() {
             type="button"
             aria-label={label}
             aria-current={active === id ? 'page' : undefined}
-            onClick={() => setActive(id)}
+            onClick={() => onChange(id)}
             className={`flex h-10 w-10 items-center justify-center rounded-full outline-none transition-colors duration-150 ease-smooth focus-visible:ring-2 focus-visible:ring-white/60 lg:h-11 lg:w-11 ${
             active === id ?
             'bg-raised text-white' :
