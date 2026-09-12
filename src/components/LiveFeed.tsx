@@ -25,7 +25,7 @@ export function LiveFeed() {
   return (
     <section
       aria-label="Live camera feed"
-      className="relative flex-1 overflow-hidden rounded-panel bg-black">
+      className="relative h-[260px] shrink-0 overflow-hidden rounded-panel bg-black sm:h-[340px] lg:h-auto lg:flex-1">
       
       <img
         src={feedImage}
@@ -53,8 +53,8 @@ export function LiveFeed() {
       {/* Reticle */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[240px] w-[240px] -translate-x-1/2 -translate-y-1/2">
-        
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[160px] w-[160px] -translate-x-1/2 -translate-y-1/2 sm:h-[200px] sm:w-[200px] lg:h-[240px] lg:w-[240px]">
+
         <span className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-white/85" />
         <span className="absolute top-1/2 left-0 h-px w-full -translate-y-1/2 bg-white/85" />
         <span className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/85" />

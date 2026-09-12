@@ -6,19 +6,19 @@ export function AircraftPanel() {
   return (
     <aside
       aria-label="Aircraft status"
-      className="flex w-[320px] shrink-0 flex-col rounded-panel bg-panel p-5">
-      
+      className="flex w-full shrink-0 flex-col rounded-panel bg-panel p-5 lg:w-[320px]">
+
       <h2 className="text-[22px] font-semibold tracking-tight text-white">{aircraft.name}</h2>
       <p className="mt-1 max-w-[240px] text-[12.5px] leading-snug text-muted">
         {aircraft.tagline}
       </p>
 
-      <div className="mt-4 overflow-hidden rounded-2xl bg-surface">
+      <div className="mt-4 hidden overflow-hidden rounded-2xl bg-surface sm:block">
         <img
           src={aircraft.image}
           alt={`${aircraft.name} quadcopter`}
           className="h-[150px] w-full object-contain" />
-        
+
       </div>
 
       <div className="mt-6">

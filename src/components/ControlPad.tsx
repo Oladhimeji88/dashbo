@@ -23,7 +23,7 @@ export function ControlPad() {
   return (
     <section
       aria-label="Gimbal controls"
-      className="flex w-[320px] shrink-0 flex-col rounded-panel bg-panel p-4">
+      className="flex w-full shrink-0 flex-col rounded-panel bg-panel p-4 lg:w-[320px]">
       
       <div className="flex items-center justify-between">
         {['AWB', 'DISP'].map((label) =>

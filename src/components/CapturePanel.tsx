@@ -7,9 +7,9 @@ export function CapturePanel() {
   return (
     <section
       aria-label="Capture settings"
-      className="flex flex-1 gap-5 rounded-panel bg-panel p-4">
-      
-      <div className="w-[250px] shrink-0 rounded-2xl bg-surface p-4">
+      className="flex flex-col gap-4 rounded-panel bg-panel p-4 sm:flex-row sm:gap-5 lg:flex-1">
+
+      <div className="w-full shrink-0 rounded-2xl bg-surface p-4 sm:w-[250px]">
         <h3 className="px-2 text-[12.5px] font-medium text-muted">Resolution</h3>
         <ul className="mt-2.5 flex flex-col gap-0.5" role="listbox" aria-label="Resolution">
           {resolutions.map((res) => {
@@ -41,7 +41,7 @@ export function CapturePanel() {
         </ul>
       </div>
 
-      <dl className="grid flex-1 grid-cols-2 content-between gap-y-5 border-l border-hairline pl-5">
+      <dl className="grid flex-1 grid-cols-2 content-between gap-y-5 border-t border-hairline pt-4 sm:border-l sm:border-t-0 sm:pl-5 sm:pt-0">
         {telemetry.map((item) =>
         <div key={item.label}>
             <dt className="text-[12.5px] text-muted">{item.label}</dt>

@@ -4,9 +4,9 @@ export function FlightPathMap() {
   return (
     <section
       aria-label="Flight path"
-      className="w-[340px] shrink-0 rounded-panel bg-panel p-4">
-      
-      <div className="relative h-full overflow-hidden rounded-2xl bg-surface">
+      className="w-full shrink-0 rounded-panel bg-panel p-4 lg:w-[340px]">
+
+      <div className="relative h-[220px] overflow-hidden rounded-2xl bg-surface lg:h-full">
         <svg
           viewBox="0 0 340 260"
           className="h-full w-full"
