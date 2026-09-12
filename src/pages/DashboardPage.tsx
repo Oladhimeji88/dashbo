@@ -1,4 +1,3 @@
-import React from 'react';
 import { LiveFeed } from '../components/LiveFeed';
 import { AircraftPanel } from '../components/AircraftPanel';
 import { CapturePanel } from '../components/CapturePanel';

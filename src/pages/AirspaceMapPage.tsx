@@ -1,4 +1,3 @@
-import React from 'react';
 import { airspaceZones, levelStyles } from '../data/airspace';
 
 export function AirspaceMapPage() {
